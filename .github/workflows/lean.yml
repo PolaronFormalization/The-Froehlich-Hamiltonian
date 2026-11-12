@@ -1,0 +1,19 @@
+name: Lean verification
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: curl -sSf https://elan.lean-lang.org/elan-init.sh | sh -s -- -y --default-toolchain none
+      - name: Install mathlib cache
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+      - name: Verify library and axioms
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          bash scripts/check.sh

@@ -1,0 +1,133 @@
+GW.Main.construction (α : ℝ) (hα : 0 ≤ α) :
+  Filter.Tendsto (fun L => GW.Gross.uvCutoffBoundedForm α (↑(GW.Gross.constructionRealCutoff L)) hα ⋯) Filter.atTop
+      (nhds (GW.Gross.constructionLimitForm α hα)) ∧
+    (∀ (u w : GW.Fock.FreeFormDomain),
+        ((GW.Gross.constructionTotalLimitForm α hα) u) w =
+          (GW.Gross.uniformBaseForm u) w + ((GW.Gross.constructionLimitForm α hα) u) w) ∧
+      (∀ (u w : GW.Fock.FreeFormDomain),
+          ((GW.Gross.constructionTotalLimitForm α hα) u) w = star (((GW.Gross.constructionTotalLimitForm α hα) w) u)) ∧
+        DenseRange ⇑GW.Fock.freeFormDomainInclusion ∧
+          CompleteSpace (GW.Operators.EnergySpace (GW.Gross.constructionClosedData α hα none)) ∧
+            (∀ (u : GW.Fock.FreeFormDomain),
+                (1 - 1 / 2) * ‖u‖ ^ 2 ≤
+                    (((GW.Gross.constructionTotalLimitForm α hα) u) u).re +
+                      (GW.Gross.uniformFormConstant α (1 / 2) + 1) * ‖GW.Fock.freeFormDomainInclusion u‖ ^ 2 ∧
+                  (((GW.Gross.constructionTotalLimitForm α hα) u) u).re +
+                      (GW.Gross.uniformFormConstant α (1 / 2) + 1) * ‖GW.Fock.freeFormDomainInclusion u‖ ^ 2 ≤
+                    (2 + 1 / 2 + 2 * GW.Gross.uniformFormConstant α (1 / 2)) * ‖u‖ ^ 2) ∧
+              Set.range ⇑(GW.Operators.completedEnergyEmbedding (GW.Gross.constructionClosedData α hα none)) =
+                  ↑GW.Fock.freeMomentumModulus.domain ∩ ↑(GW.Fock.physicalNumberPower (1 / 2)).domain ∧
+                (∀ (u : GW.Fock.FreeFormDomain),
+                    -(GW.Gross.uniformFormConstant α (1 / 2) + 1) * ‖GW.Fock.freeFormDomainInclusion u‖ ^ 2 ≤
+                      (((GW.Gross.constructionTotalLimitForm α hα) u) u).re) ∧
+                  (∃! T,
+                      GW.IsSelfAdjointOperator T ∧
+                        (∀ (x : ↥T.domain),
+                            ∃ u,
+                              GW.Fock.freeFormDomainInclusion u = ↑x ∧
+                                ∀ (v : GW.Fock.FreeFormDomain),
+                                  ((GW.Gross.constructionTotalLimitForm α hα) v) u =
+                                    inner ℂ (GW.Fock.freeFormDomainInclusion v) (↑T x)) ∧
+                          ∃ b, ∀ (x : ↥T.domain), -b * ‖↑x‖ ^ 2 ≤ (inner ℂ (↑x) (↑T x)).re) ∧
+                    GW.Gross.constructionHamiltonian 0 ⋯ = GW.Fock.freeHamiltonian
+'GW.Main.construction' depends on axioms: [propext, Classical.choice, Quot.sound]
+AXIOM PASS GW.Main.construction: [propext, Classical.choice, Quot.sound]
+GW.Main.domain (α : ℝ) (hα : 0 ≤ α) :
+  let K0 := GW.Model.standardGrossCutoff α;
+  0 < K0 ∧
+    ∀ (K : ℝ) (hKS : K0 ≤ K),
+      have hK := ⋯;
+      have f := GW.Gross.grossDressingCoefficient α K hα hK;
+      have fs := GW.Gross.derivativeCoefficient α K hα hK;
+      (↑↑f =ᵐ[MeasureTheory.volume] fun k => ↑(GW.Model.b α K k)) ∧
+        (∀ (Ψ : GW.Fock.Physical),
+            ↑↑((GW.Gross.domainGrossUnitary α K hα hK) Ψ) =ᵐ[MeasureTheory.volume] fun x =>
+              (GW.Fock.weylUnitary (-GW.Analysis.phaseAt f x)) (↑↑Ψ x)) ∧
+          (∀ (f g : ↥GW.Fock.OneBoson),
+              (GW.Fock.weylUnitary f) (GW.Fock.exponentialVector g) =
+                Complex.exp (-↑(‖f‖ ^ 2) / 2 - inner ℂ f g) • GW.Fock.exponentialVector (g + f)) ∧
+            (∀ (u : ↥GW.Fock.freeHamiltonian.domain),
+                ↑(GW.Gross.dressedInfiniteHamiltonian α K hα hK) u =
+                  ↑GW.Fock.freeHamiltonian u +
+                    ((GW.Gross.constructionFieldRestriction (GW.Model.cutoffL2 α K hα hK)) u +
+                      (GW.Gross.dressedInfiniteRemainder α K hα hK) u)) ∧
+              (∀ (u : ↥GW.Fock.freeHamiltonian.domain),
+                  (GW.Gross.dressedInfiniteRemainder α K hα hK) u =
+                    -(2 •
+                              ∑ j,
+                                (GW.Fock.commutatorPhaseCreatorMap (fs j))
+                                  ((GW.Fock.commutatorGraphMomentumRootMap j) (GW.Gross.conjugationSourceGraph u))) -
+                          2 • GW.Gross.derivativeInfiniteDot α K hα hK (GW.Gross.conjugationSourceGraph u) +
+                        ∑ j, (GW.Gross.conjugationSquareMap (fs j)) u +
+                      ↑(GW.Gross.dressedInfiniteCounterterm α K) • ↑u) ∧
+                GW.Gross.dressedInfiniteCounterterm α K =
+                    ∫ (k : GW.Space) in GW.Model.highRegion K,
+                      GW.Model.v α k ^ 2 * (1 / (1 + ‖k‖ ^ 2) ^ 2 - 2 / (1 + ‖k‖ ^ 2)) ∧
+                  (∀ (u : ↥GW.Fock.freeHamiltonian.domain) (j : Fin 3),
+                      have U := GW.Fock.commutatorSourceGraphInput u;
+                      (↑u, (GW.Fock.commutatorPhaseAnnihilatorMap (fs j)) (GW.Fock.commutatorGraphRootMap U)) ∈
+                          (GW.Fock.generalizedAnnihilation (GW.Fock.phaseMultiplicationKernel (fs j))).graph ∧
+                        ((GW.Fock.commutatorPhaseAnnihilatorMap (fs j)) (GW.Fock.commutatorGraphRootMap U),
+                              (GW.Fock.commutatorPhaseAnnihilatorMap (fs j))
+                                  ((GW.Fock.commutatorGraphMomentumRootMap j) U) +
+                                (GW.Gross.derivativeSingularMap α K hα hK j) U) ∈
+                            (GW.Fock.electronMomentumCoordinate j).graph ∧
+                          (↑(GW.Fock.electronMomentumCoordinate j) (GW.Fock.commutatorMomentumInput U j),
+                                (GW.Fock.commutatorPhaseCreatorMap (fs j))
+                                  ((GW.Fock.commutatorGraphMomentumRootMap j) U)) ∈
+                              (GW.Fock.generalizedCreation (GW.Fock.phaseMultiplicationKernel (fs j))).graph ∧
+                            (↑u, (GW.Gross.constructionFieldRestriction (fs j)) u) ∈
+                                (GW.Fock.generalizedField (GW.Fock.phaseMultiplicationKernel (fs j))).graph ∧
+                              ((GW.Gross.constructionFieldRestriction (fs j)) u,
+                                  (GW.Gross.conjugationSquareMap (fs j)) u) ∈
+                                (GW.Fock.generalizedField (GW.Fock.phaseMultiplicationKernel (fs j))).graph) ∧
+                    GW.IsSelfAdjointOperator (GW.Gross.dressedInfiniteHamiltonian α K hα hK) ∧
+                      (GW.Gross.dressedInfiniteHamiltonian α K hα hK).domain = GW.Fock.freeHamiltonian.domain ∧
+                        (∀ (u : ↥GW.Fock.freeHamiltonian.domain),
+                            ‖↑u‖ + ‖↑(GW.Gross.dressedInfiniteHamiltonian α K hα hK) u‖ ≤
+                                (2 + 3 / 8 + GW.Gross.dressedGraphConstant α K hα hK) *
+                                  (‖↑u‖ + ‖↑GW.Fock.freeHamiltonian u‖) ∧
+                              ‖↑u‖ + ‖↑GW.Fock.freeHamiltonian u‖ ≤
+                                (1 + (1 + GW.Gross.dressedGraphConstant α K hα hK) / (1 - 3 / 8)) *
+                                  (‖↑u‖ + ‖↑(GW.Gross.dressedInfiniteHamiltonian α K hα hK) u‖)) ∧
+                          (∀ (adj : Bool) (u : GW.Fock.FreeFormDomain),
+                              GW.Fock.freeFormDomainInclusion (GW.Gross.grossSourceQInput adj α K hα hK u) =
+                                  (GW.Gross.grossWeylSide adj f) (GW.Fock.freeFormDomainInclusion u) ∧
+                                ‖GW.Gross.grossSourceQInput adj α K hα hK u‖ ≤ GW.Gross.grossSourceL α K hα hK * ‖u‖) ∧
+                            GW.Gross.constructionHamiltonian α hα =
+                                GW.Operators.unitaryTransport (GW.Gross.domainGrossUnitary α K hα hK)
+                                  (GW.Gross.dressedInfiniteHamiltonian α K hα hK) ∧
+                              (GW.Gross.constructionHamiltonian α hα).domain =
+                                  Submodule.map (↑(GW.Gross.domainGrossUnitary α K hα hK).symm.toLinearEquiv)
+                                    GW.Fock.freeHamiltonian.domain ∧
+                                ∀ (L : ℝ) (hLS : K0 ≤ L),
+                                  have hL := ⋯;
+                                  GW.Operators.unitaryTransport (GW.Gross.domainGrossUnitary α K hα hK)
+                                      (GW.Gross.dressedInfiniteHamiltonian α K hα hK) =
+                                    GW.Operators.unitaryTransport (GW.Gross.domainGrossUnitary α L hα hL)
+                                      (GW.Gross.dressedInfiniteHamiltonian α L hα hL)
+'GW.Main.domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+AXIOM PASS GW.Main.domain: [propext, Classical.choice, Quot.sound]
+GW.Main.regularity (α : ℝ) (hα : 0 ≤ α) :
+  (GW.Gross.constructionHamiltonian α hα).domain ≤
+      GW.Fock.physicalNumberOperator.domain ⊓
+        ⨅ s, ⨅ (_ : 0 ≤ s), ⨅ (_ : s < 3 / 2), (GW.Fock.electronRadialPower s).domain ∧
+    (GW.Gross.constructionHamiltonian α hα).domain ≤
+        GW.Fock.physicalNumberOperator.domain ⊓
+          ⨅ t, ⨅ (_ : 0 ≤ t), ⨅ (_ : t < 3 / 4), (GW.Regularity.electronLaplacianPower t).domain ∧
+      (0 < α →
+          (GW.Gross.constructionHamiltonian α hα).domain ⊓ (GW.Fock.electronRadialPower (3 / 2)).domain = ⊥ ∧
+            (GW.Gross.constructionHamiltonian α hα).domain ⊓ (GW.Regularity.electronLaplacianPower (3 / 4)).domain = ⊥ ∧
+              (GW.Gross.constructionHamiltonian α hα).domain ⊓ GW.Fock.freeMomentumSquare.domain = ⊥ ∧
+                (GW.Gross.constructionHamiltonian α hα).domain ⊓ GW.Fock.freeHamiltonian.domain = ⊥ ∧
+                  ∀ (s : ℝ),
+                    3 / 2 ≤ s →
+                      (GW.Gross.constructionHamiltonian α hα).domain ⊓ (GW.Fock.electronRadialPower s).domain = ⊥) ∧
+        GW.Gross.constructionHamiltonian 0 ⋯ = GW.Fock.freeHamiltonian ∧
+          (GW.Gross.constructionHamiltonian 0 ⋯).domain = GW.Fock.freeHamiltonian.domain ∧
+            (GW.Gross.constructionHamiltonian 0 ⋯).domain =
+                GW.Fock.freeMomentumSquare.domain ⊓ GW.Fock.physicalNumberOperator.domain ∧
+              GW.Fock.electronRadialPower 0 = LinearMap.id.toPMap ⊤ ∧
+                GW.Regularity.electronLaplacianPower 0 = LinearMap.id.toPMap ⊤
+'GW.Main.regularity' depends on axioms: [propext, Classical.choice, Quot.sound]
+AXIOM PASS GW.Main.regularity: [propext, Classical.choice, Quot.sound]
