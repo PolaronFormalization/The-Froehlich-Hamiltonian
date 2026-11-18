@@ -10,13 +10,35 @@ This formalization project establishes the self-adjointness, domain characteriza
 
 ## Scope of the formalization
 
-The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean). Together, they establish the following three results:
+The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean).
 
-1. **Hamiltonian construction and form domain:** The three-dimensional Fröhlich Hamiltonian is constructed as a self-adjoint operator from its associated quadratic form, with the corresponding form-domain characterization.
+Here `H_α` denotes the three-dimensional Fröhlich Hamiltonian on `L²(ℝ³_x; ℱ)`, formally given by
 
-2. **Exact operator domain:** The operator domain is characterized using the unitary Gross transformation.
+`H_α = p² + N + Φ(G_{α,x})`,    `G_{α,x}(k) = e^{-ik·x} √α / |k|`,
 
-3. **Regularity:** Sharp regularity and critical nonregularity properties of vectors in the operator domain are established.
+where `α ≥ 0`, `p = -i∇_x` is the electron momentum operator, `N` the phonon number operator, `ℱ` the bosonic Fock space, and `Φ(G) = a*(G) + a(G)` the field operator. Since the form factor is not square-integrable at large momenta, the interaction is defined through ultraviolet-cutoff quadratic forms.
+
+The three theorems establish the following results:
+
+1. **Hamiltonian construction and form domain:** The ultraviolet-cutoff interaction forms converge to a limiting form, and the resulting closed, semibounded quadratic form determines a unique self-adjoint Hamiltonian `H_α` with form domain
+
+   `Q(H_α) = D(|p|) ∩ D(N^{1/2})`.
+
+2. **Exact operator domain:** For sufficiently large `K`, the Gross transformation `U_{α,K}` gives
+
+   `H_α = U_{α,K}* H'_{α,K} U_{α,K}`,
+
+   where the dressed Hamiltonian `H'_{α,K}` is self-adjoint on `D(H_0)`, with `H_0 = p² + N`. In particular,
+
+   `D(H_α) = U_{α,K}* D(H_0)`.
+
+3. **Regularity:** The operator domain satisfies
+
+   `D(H_α) ⊆ D(N) ∩ ⋂_{0 ≤ s < 3/2} D(|p|^s)`.
+
+   For every `α > 0`, the critical exponent is excluded:
+
+   `D(H_α) ∩ D(|p|^{3/2}) = {0}`.
 
 The formalization treats the Fröhlich Hamiltomnian, and does **not** address the general form factors considered in the original paper.
 
