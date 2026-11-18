@@ -2,7 +2,7 @@
 
 [![Lean verification](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml/badge.svg)](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml)
 
-A #Lean 4 / Mathlib formalization of the main results from
+A **Lean 4 / Mathlib** formalization of the main results from
 
 > M. Griesemer and A. Wünsch, *Self-Adjointness and Domain of the Froehlich Hamiltonian*, [arXiv:1508.02533](https://arxiv.org/abs/1508.02533).
 
