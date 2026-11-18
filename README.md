@@ -48,11 +48,18 @@ The three main theorems are formalized in Lean 4 using Mathlib. The verification
 
 The following table lists the main proved results, together with their corresponding Lean declarations and source files.
 
+
 | Mathematical object or result | Type | Lean declaration | Source file |
 | --- | --- | --- | --- |
 | Hamiltonian construction and form domain | Theorem | `GW.Main.construction` | [`TargetConstruction.lean`](GW/Main/TargetConstruction.lean) |
 | Exact operator domain via Gross transformation | Theorem | `GW.Main.domain` | [`TargetDomain.lean`](GW/Main/TargetDomain.lean) |
 | Sharp regularity and critical nonregularity | Theorem | `GW.Main.regularity` | [`TargetRegularity.lean`](GW/Main/TargetRegularity.lean) |
+| Fröhlich form factor, UV cutoff and dressing coefficient | Definitions | `v`, `cutoff`, `b` | [`Coefficient.lean`](GW/Model/Coefficient.lean) |
+| Cutoff interaction form and limiting form | Definitions | `uvCutoffBoundedForm`, `constructionLimitForm` | [`MainUvForm.lean`](GW/Gross/MainUvForm.lean), [`MainFormH.lean`](GW/Gross/MainFormH.lean) |
+| Fröhlich Hamiltonian and self-adjointness | Definition + theorem | `constructionHamiltonian`, `constructionHamiltonian_selfadjoint` | [`MainFormH.lean`](GW/Gross/MainFormH.lean) |
+| Gross transformation and operator domain | Definition + theorem | `domainGrossUnitary`, `main_domain` | [`MainDomain.lean`](GW/Gross/MainDomain.lean) |
+| Fractional powers and critical regularity | Definition + theorems | `electronLaplacianPower`, `regHamiltonian_radial`, `regHamiltonian_critical` | [`RegMainCorollary.lean`](GW/Regularity/RegMainCorollary.lean) |
+
 
 ## How to read the formalization
 
