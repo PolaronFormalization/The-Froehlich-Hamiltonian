@@ -28,7 +28,7 @@ The three theorems establish the following results:
 
    `H_α = U_{α,K}* H'_{α,K} U_{α,K}`,
 
-   where the dressed Hamiltonian `H'_{α,K}` is self-adjoint on `D(H_0)`, with `H_0 = p² + N`. In particular,
+   where the dressed Hamiltonian `H'_{α,K}` is self-adjoint on `D(H_0)`, with `H_0 = p² + N`. In particular, the domain is characterized by
 
    `D(H_α) = U_{α,K}* D(H_0)`.
 
