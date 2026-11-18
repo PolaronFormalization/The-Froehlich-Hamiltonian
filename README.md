@@ -18,7 +18,7 @@ The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.
 
 3. **Regularity:** Sharp regularity and critical nonregularity properties of vectors in the operator domain are established.
 
-The formalization addresses only the Fröhlich Hamiltomnian, and does **not** treat the more general form factors considered in the original paper.
+The formalization treats the Fröhlich Hamiltomnian, and does **not** address the general form factors considered in the original paper.
 
 ## Results
 
