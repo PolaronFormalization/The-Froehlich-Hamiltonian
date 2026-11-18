@@ -10,11 +10,11 @@ This formalization project establishes the self-adjointness, domain characteriza
 
 ## Main theorems
 
-The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean). Together, they establish the following results:
+The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean). Together, they establish the following three results:
 
-1. **Hamiltonian construction and form domain:** The three-dimensional Fröhlich Hamiltonian is constructed as a self-adjoint operator from its quadratic form, with the corresponding form-domain characterization.
+1. **Hamiltonian construction and form domain:** The three-dimensional Fröhlich Hamiltonian is constructed as a self-adjoint operator from its associated quadratic form, with the corresponding form-domain characterization.
 
-2. **Exact operator domain:** The operator domain is characterized using the Gross transformation.
+2. **Exact operator domain:** The operator domain is characterized using the unitary Gross transformation.
 
 3. **Regularity:** Sharp regularity and critical nonregularity properties of vectors in the operator domain are established.
 
