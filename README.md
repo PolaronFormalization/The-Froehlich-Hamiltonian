@@ -12,9 +12,9 @@ This formalization project establishes the self-adjointness, domain characteriza
 
 The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean).
 
-Here `H_α` denotes the three-dimensional Fröhlich Hamiltonian on `L²(ℝ³_x; ℱ)`, formally given by
+Here `H_α` denotes the three-dimensional Fröhlich Hamiltonian on the Hilbert space `L²(ℝ³_x; ℱ)`, formally given by
 
-`H_α = p² + N + Φ(G_{α,x})`,    `G_{α,x}(k) = e^{-ik·x} √α / |k|`,
+`H_α = p² + N + Φ(G_{α,x})`   with form factor   `G_{α,x}(k) = e^{-ik·x} √α / |k|`,
 
 where `α ≥ 0`, `p = -i∇_x` is the electron momentum operator, `N` the phonon number operator, `ℱ` the bosonic Fock space, and `Φ(G) = a*(G) + a(G)` the field operator. Since the form factor is not square-integrable at large momenta, the interaction is defined through ultraviolet-cutoff quadratic forms.
 
