@@ -16,7 +16,7 @@ Here `H_α` denotes the three-dimensional Fröhlich Hamiltonian on the Hilbert s
 
 `H_α = p² + N + Φ(G_{α,x})`   with form factor   `G_{α,x}(k) = e^{-ik·x} √α / |k|`,
 
-where `α ≥ 0`, `p = -i∇_x` is the electron momentum operator, `N` the phonon number operator, `ℱ` the bosonic Fock space, and `Φ(G) = a*(G) + a(G)` the field operator. Since the form factor is not square-integrable at large momenta, the interaction is defined through ultraviolet-cutoff quadratic forms.
+where `α ≥ 0`, `p = -i∇_x` is the electron momentum operator, `N` the phonon number operator, `ℱ` the bosonic Fock space, and `Φ(G) = a*(G) + a(G)` the field operator. Since the form factor is not square-integrable at large momenta, the interaction is defined as a limit of ultraviolet-cutoff quadratic forms.
 
 The three theorems establish the following results:
 
