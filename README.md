@@ -24,7 +24,7 @@ The three theorems establish the following results:
 
    `Q(H_α) = D(|p|) ∩ D(N^{1/2})`.
 
-2. **Exact operator domain:** For sufficiently large `K`, the Gross transformation `U_{α,K}` gives
+2. **Exact operator domain:** For sufficiently large `K`, the unitary Gross transformation `U_{α,K}` gives
 
    `H_α = U_{α,K}* H'_{α,K} U_{α,K}`,
 
