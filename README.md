@@ -8,7 +8,7 @@ A **Lean 4 / Mathlib** formalization of the main results from
 
 This formalization project establishes the self-adjointness, domain characterization, and regularity properties of the three-dimensional Fröhlich Hamiltonian. The code was obtained with assistance from ChatGPT and Codex. An expanded natural-language proof blueprint is included in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
 
-## Main theorems
+## Scope of the formalization
 
 The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean). Together, they establish the following three results:
 
@@ -17,6 +17,8 @@ The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.
 2. **Exact operator domain:** The operator domain is characterized using the unitary Gross transformation.
 
 3. **Regularity:** Sharp regularity and critical nonregularity properties of vectors in the operator domain are established.
+
+The formalization addresses only the Fröhlich Hamiltomnian, and does **not** treat the more general form factors considered in the original paper.
 
 ## Results
 
