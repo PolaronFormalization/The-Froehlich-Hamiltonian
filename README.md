@@ -40,7 +40,7 @@ The three theorems establish the following results:
 
    `D(H_α) ∩ D(|p|^{3/2}) = {0}`.
 
-The formalization treats the Fröhlich Hamiltomnian, and does **not** address the general form factors considered in the original paper.
+The formalization treats the Fröhlich Hamiltonian, and does **not** address the general form factors considered in the original paper.
 
 ## Results
 
@@ -65,7 +65,7 @@ The following table lists the main proved results, together with their correspon
 
 The statements of the three main theorems are contained in [`TargetConstruction.lean`](GW/Main/TargetConstruction.lean), [`TargetDomain.lean`](GW/Main/TargetDomain.lean), and [`TargetRegularity.lean`](GW/Main/TargetRegularity.lean). The mathematical development is contained in [`GW/`](GW/), including the Fock-space construction, functional analysis, Gross transformation, and regularity theory.
 
-The original root module [`GW.lean`](GW.lean) imports the complete mathematical development. An expanded and modified natural-language proof blueprint is available in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
+The original root module [`GW.lean`](GW.lean) imports the complete mathematical development. An expanded natural-language proof blueprint is available in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
 
 ### Construction of the Fröhlich Hamiltonian
 
