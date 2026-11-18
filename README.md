@@ -1,5 +1,7 @@
 # Self-adjointness and domain of the three-dimensional Fröhlich Hamiltonian — Lean 4 formalization
 
+[![Lean verification](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml/badge.svg)](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml)
+
 This repository formalizes the three specified results for the three-dimensional Fröhlich kernel, following the mathematical specification in [`source/GW-paper-formalization.tex`](source/GW-paper-formalization.tex), based on Griesemer and Wünsch, [*Self-Adjointness and Domain of the Froehlich Hamiltonian*](https://arxiv.org/abs/1508.02533v2).
 
 The mathematical specification is fixed to SHA-256 `cc5d3975c3b0450758f4bc79e7f1f86ac00a148a03f424427cef42a16ed4815f`.
