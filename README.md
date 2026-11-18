@@ -3,11 +3,11 @@
 
 [![Lean verification](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml/badge.svg)](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml)
 
-A Lean 4 / Mathlib formalization of three results concerning the three-dimensional Fröhlich Hamiltonian, based on
+A Lean 4 / Mathlib formalization of three main results of
 
 > M. Griesemer and A. Wünsch, *Self-Adjointness and Domain of the Froehlich Hamiltonian*, [arXiv:1508.02533](https://arxiv.org/abs/1508.02533).
 
-The formalization follows the mathematical specification in [`source/GW-paper-formalization.tex`](source/GW-paper-formalization.tex). The specification is fixed to SHA-256 `cc5d3975c3b0450758f4bc79e7f1f86ac00a148a03f424427cef42a16ed4815f`.
+The formalized result is restricted to the Fröhlich polaron model. It follows the mathematical specification in [`source/GW-paper-formalization.tex`](source/GW-paper-formalization.tex). The specification is fixed to SHA-256 `cc5d3975c3b0450758f4bc79e7f1f86ac00a148a03f424427cef42a16ed4815f`.
 
 ## Main results
 
