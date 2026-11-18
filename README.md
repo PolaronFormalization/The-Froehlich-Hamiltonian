@@ -2,11 +2,11 @@
 
 [![Lean verification](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml/badge.svg)](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml)
 
-A Lean 4 / Mathlib formalization of the main results from
+A #Lean 4 / Mathlib formalization of the main results from
 
 > M. Griesemer and A. Wünsch, *Self-Adjointness and Domain of the Froehlich Hamiltonian*, [arXiv:1508.02533](https://arxiv.org/abs/1508.02533).
 
-This formalization project establishes the self-adjointness, domain characterization, and regularity properties of the three-dimensional Fröhlich Hamiltonian. The code was obtained with assistance from ChatGPT and Codex. The proofs do not follow the original arguments line by line, but include modifications made to facilitate the formal verification. An expanded and modified natural-language proof blueprint is included in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
+This formalization project establishes the self-adjointness, domain characterization, and regularity properties of the three-dimensional Fröhlich Hamiltonian. The code was obtained with assistance from ChatGPT and Codex. An expanded natural-language proof blueprint is included in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
 
 ## Main theorems
 
