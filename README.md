@@ -1,23 +1,28 @@
-
 # Self-adjointness and domain of the three-dimensional Fröhlich Hamiltonian — Lean 4 formalization
 
 [![Lean verification](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml/badge.svg)](https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian/actions/workflows/lean.yml)
 
-A Lean 4 / Mathlib formalization of three main results of
+A Lean 4 / Mathlib formalization of the main results from
 
 > M. Griesemer and A. Wünsch, *Self-Adjointness and Domain of the Froehlich Hamiltonian*, [arXiv:1508.02533](https://arxiv.org/abs/1508.02533).
 
-The formalized result is restricted to the Fröhlich polaron model. It follows the mathematical specification in [`source/GW-paper-formalization.tex`](source/GW-paper-formalization.tex). The specification is fixed to SHA-256 `cc5d3975c3b0450758f4bc79e7f1f86ac00a148a03f424427cef42a16ed4815f`.
+This formalization project establishes the self-adjointness, domain characterization, and regularity properties of the three-dimensional Fröhlich Hamiltonian. The code was obtained with assistance from ChatGPT and Codex. The proofs do not follow the original arguments line by line, but include modifications made to facilitate the formal verification. An expanded and modified natural-language proof blueprint is included in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
 
-## Main results
+## Main theorems
 
-The formalization establishes three results for the three-dimensional Fröhlich Hamiltonian:
+The designated theorems are [`GW.Main.construction`](GW/Main/TargetConstruction.lean), [`GW.Main.domain`](GW/Main/TargetDomain.lean), and [`GW.Main.regularity`](GW/Main/TargetRegularity.lean). Together, they establish the following results:
 
-1. **Hamiltonian construction and form domain:** construction of the self-adjoint Hamiltonian from its quadratic form, including its form domain.
-2. **Exact operator domain:** characterization of the operator domain using the Gross transformation.
-3. **Regularity:** sharp regularity and critical nonregularity properties of vectors in the operator domain.
+1. **Hamiltonian construction and form domain:** The three-dimensional Fröhlich Hamiltonian is constructed as a self-adjoint operator from its quadratic form, with the corresponding form-domain characterization.
+
+2. **Exact operator domain:** The operator domain is characterized using the Gross transformation.
+
+3. **Regularity:** Sharp regularity and critical nonregularity properties of vectors in the operator domain are established.
 
 ## Results
+
+The three main theorems are formalized in Lean 4 using Mathlib. The verification checks allow only Lean's standard foundational axioms (`propext`, `Classical.choice`, `Quot.sound`). The completed development reported no unfinished proof debt.
+
+The following table lists the main proved results, together with their corresponding Lean declarations and source files.
 
 | Mathematical object or result | Type | Lean declaration | Source file |
 | --- | --- | --- | --- |
@@ -27,17 +32,21 @@ The formalization establishes three results for the three-dimensional Fröhlich 
 
 ## How to read the formalization
 
-The three final theorems are stated in the source files linked above. The mathematical development is contained in [`GW/`](GW/), including the Fock-space framework, functional analysis, Gross transformation, and regularity theory. The original root module [`GW.lean`](GW.lean) imports the full development, while [`GW/All.lean`](GW/All.lean) is an additional umbrella module.
+The statements of the three main theorems are contained in [`TargetConstruction.lean`](GW/Main/TargetConstruction.lean), [`TargetDomain.lean`](GW/Main/TargetDomain.lean), and [`TargetRegularity.lean`](GW/Main/TargetRegularity.lean). The mathematical development is contained in [`GW/`](GW/), including the Fock-space construction, functional analysis, Gross transformation, and regularity theory.
 
-The expanded mathematical specification is available in [`source/GW-paper-formalization.tex`](source/GW-paper-formalization.tex). The [`reviews/`](reviews/) directory contains historical semantic-review reports of the original development.
+The original root module [`GW.lean`](GW.lean) imports the complete mathematical development. An expanded and modified natural-language proof blueprint is available in [`source/GW-paper-formalization.pdf`](source/GW-paper-formalization.pdf).
 
-This source release omits downloaded Mathlib files, build caches, session transcripts, scratch proofs, and bulk verification logs. The original `lakefile.toml` was simplified only by removing its obsolete `verification` library target; the manifest, toolchain, root imports, and retained mathematical proof files are unchanged.
+### Construction of the Fröhlich Hamiltonian
 
-Part of this functional-analytic framework is also used in our separate [Lean formalization of the absence of excited eigenvalues at weak coupling](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling). That project concerns the spectral properties of the fiber Hamiltonians, rather than the domain and regularity of the full Hamiltonian.
+The construction of the Fröhlich Hamiltonian is part of the formalization. The Fröhlich form factor is not square-integrable, so the interaction cannot be defined directly as an ordinary field operator.
+
+Instead, the formalized construction uses ultraviolet cutoffs and the corresponding quadratic forms to define the Hamiltonian. The resulting closed, semibounded quadratic form determines a self-adjoint operator. The formalization further establishes its exact operator domain through the Gross transformation and proves the associated regularity and critical nonregularity results.
+
+Part of the functional-analytic framework developed in this project is also used in our separate [Lean formalization of the absence of excited eigenvalues at weak coupling](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling). That project concerns the spectral properties of the Fröhlich fiber Hamiltonians and incorporates the present framework under `GW/`.
 
 ## Build and check
 
-Install Lean with [elan](https://lean-lang.org/install/), as well as Git and Python 3. The project uses Lean `v4.36.0-rc2` and Mathlib at commit `9bac2d0692944a775113f7c130fd5e5b4608a854`, with dependency versions pinned by the project files.
+Install Lean with [elan](https://lean-lang.org/install/), Git, and Python 3. The project uses Lean `v4.36.0-rc2` (`lean-toolchain`), and the exact dependency revisions are pinned in `lake-manifest.json`.
 
 Clone the repository and enter its directory:
 
@@ -46,21 +55,25 @@ git clone https://github.com/PolaronFormalization/The-Froehlich-Hamiltonian.git
 cd The-Froehlich-Hamiltonian
 ```
 
-Then download the available Mathlib cache and run the verification script:
+Then prepare the dependencies and build the formalization:
 
 ```bash
 lake exe cache get
 bash scripts/check.sh
 ```
 
-The script builds the entire public library through the original full-import [`GW.lean`](GW.lean), builds `GW.All`, and checks the axioms of the three final theorems. Only Lean's standard foundational axioms (`propext`, `Classical.choice`, `Quot.sound`) are permitted. To inspect the theorem statements and axiom output directly, run:
+The verification script builds the complete public library through `GW.lean`, builds `GW.All`, and checks the axioms of the three final theorems.
+
+To inspect the theorem statements and their foundational axioms, run:
 
 ```bash
 lake env lean verification/CheckAxioms.lean
 ```
 
-**Verification status.** The original completed development reported 108/108 supporting units, 3/3 main targets, 24/24 target clauses, and no unfinished proof debt. This source-only release was statically checked against that development, but **has not yet been freshly built in an independent Lean environment**. The archived review reports provide supporting evidence, not a substitute for a fresh build of this repository.
+The axiom check permits only `propext`, `Classical.choice`, and `Quot.sound`, the standard foundational axioms of Lean.
+
+The source-only release has been statically checked against the original completed development but has not yet been freshly built in an independent Lean environment.
 
 ## License and citation
 
-Please cite the Griesemer–Wünsch paper above for the mathematical results and reference this repository when discussing the Lean formalization. The formalization and its mathematical specification are distinct works. **No open-source license has currently been assigned to this repository**; terms for general reuse must be established by the responsible copyright holder.
+The Lean code is released under the Apache License 2.0 license (see [`LICENSE`](LICENSE)). The mathematical results are described in the paper cited above. If you use this formalization, please cite the corresponding paper and reference this repository.
